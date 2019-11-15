@@ -1,12 +1,10 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const auth = require('./routes/auth');
 
 const app = express();
+app.use(auth);
 const mongoUri = 'mongodb://127.0.0.1:27017';
-
-app.get('/', (req, res) => {
-  res.send('Hi there!');
-});
 
 mongoose.connect(mongoUri, {
   useNewUrlParser: true,
@@ -16,6 +14,7 @@ mongoose.connect(mongoUri, {
 mongoose.connection.on('connected', () => {
   console.log('Connected to MongoDb');
 });
+
 mongoose.connection.on('Error', err => {
   console.log('Error connectiong to MongoDb', err);
 });
