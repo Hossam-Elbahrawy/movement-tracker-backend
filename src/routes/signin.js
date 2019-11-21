@@ -15,8 +15,7 @@ router.post('/', auth, async (req, res) => {
   if (!user) return res.status(422).send({ error: 'E-mail not found.' });
 
   try {
-    console.log('User', User);
-    await User.comparePassword(password);
+    await user.comparePassword(password);
     const token = jwt.sign({ userId: user._id }, 'MY_SECRET_KEY');
     res.status(200).send({ token });
   } catch (err) {
