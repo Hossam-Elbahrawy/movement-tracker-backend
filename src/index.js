@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const signup = require('./routes/signup');
 const signin = require('./routes/signin');
+const track = require('./routes/track');
 const auth = require('./middlewares/auth');
 const app = express();
 
@@ -12,6 +13,7 @@ app.use(bodyParser.json());
 //api endpoints
 app.use('/signup', signup);
 app.use('/signin', signin);
+app.use('/tracks', track);
 
 // MongoDb Connection
 const mongoUri = 'mongodb://127.0.0.1:27017';
