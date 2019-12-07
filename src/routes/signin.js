@@ -5,9 +5,8 @@ const auth = require('../middlewares/auth');
 
 const router = express.Router();
 
-router.post('/', auth, async (req, res) => {
+router.post('/', async (req, res) => {
   const { email, password } = req.body;
-
   if (!email || !password)
     return res.status(422).send({ error: 'Must Provide E-mail and Password.' });
 
